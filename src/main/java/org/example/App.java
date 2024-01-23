@@ -22,12 +22,24 @@ public class App
         try {
             session.beginTransaction();
 
-            Person person = new Person("Test person", 50);
-            Passport passport = new Passport(person, 123456);
+//            Person person = new Person("Test person", 50);
+//            Passport passport = new Passport(123456);
+//
+//            person.setPassport(passport);
+//
+//            session.save(person);
+//            ------------------------------------
 
-            person.setPassport(passport);
+//            Passport passport = session.get(Passport.class, 2);
+//            System.out.println(passport.getPerson().getName());
+//            ------------------------------------
 
-            session.save(person);
+//            Person person = session.get(Person.class, 2);
+//            person.getPassport().setPassportNumber(77777);
+//            ------------------------------------
+
+            Person person = session.get(Person.class, 2);
+            session.remove(person);
 
             session.getTransaction().commit();
         } finally {
