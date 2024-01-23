@@ -5,17 +5,29 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Passport")
-public class Passport implements Serializable {
+public class Passport{
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person person;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "passport_number")
     private int passportNumber;
 
+    @OneToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person person;
+
     public Passport() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Passport(int passportNumber) {
